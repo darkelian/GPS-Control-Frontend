@@ -1,0 +1,96 @@
+.splashwaveanimation {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  overflow: hidden;
+}
+@keyframes logoin {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes logostay {
+    0% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(0.9);
+    }
+  }
+
+@keyframes splash-wave-1 {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  8% {
+    opacity: 1;
+  }
+  100% {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+.img-tel {
+  position: absolute;
+  top: 25%;
+  left: 24%;
+  width: 55%;
+  height: 55%;
+  object-fit: contain;
+  z-index: 105;
+  transform: scale(1);
+  animation: logoin 400ms ease, logostay 400ms ease alternate-reverse infinite;
+}
+
+.splash-wave-1,
+.splash-wave-2,
+.splash-wave-3,
+.splash-wave-4 {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 25%;
+  margin: auto;
+  width: 50vw;
+  height: 50vw;
+  border-radius: 50%;
+  background-color: white;
+  -webkit-box-shadow: 0 0 20vw #8c8c8c60;
+  box-shadow: 0 0 20vw #8c8c8c60;
+  opacity: 0;
+  z-index: 0;
+  transform: scale(0);
+  box-sizing: border-box;
+  font-family: "Ubuntu", "Montserrat", sans-serif;
+  font-weight: 300;
+  font-size: 1rem;
+  color: #a8a8a8;
+  line-height: normal;
+}
+
+.splash-wave-1 {
+  z-index: 101;
+  animation: splash-wave-1 5.4s ease-out infinite;
+}
+
+.splash-wave-2 {
+  z-index: 102;
+  animation: splash-wave-1 5.4s 1.3s ease-out infinite;
+}
+
+.splash-wave-3 {
+  z-index: 103;
+  animation: splash-wave-1 5.4s 2.6s ease-out infinite;
+}
+
+.splash-wave-4 {
+  z-index: 104;
+  animation: splash-wave-1 5.4s 3.9s ease-out infinite;
+}
