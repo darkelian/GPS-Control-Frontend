@@ -6,3 +6,11 @@
   text-align: center;
   scroll-behavior: smooth;
 }
+.layout-container {
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.layout-container.fade-in {
+  opacity: 1;
+}
