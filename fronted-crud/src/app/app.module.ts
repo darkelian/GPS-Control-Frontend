@@ -8,12 +8,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { SplashComponent } from './splash/splash.component';
 import { HomeComponent } from './home/home.component';
 import { AngularFullpageModule } from '@fullpage/angular-fullpage';
+import { LayoutComponent } from './layout/layout.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SplashComponent,
-    HomeComponent
+    HomeComponent,
+    LayoutComponent
   ],
   imports: [
     BrowserModule,
