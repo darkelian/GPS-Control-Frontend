@@ -1,10 +1,114 @@
-.splashwaveanimation {
+/* splash.component.scss */
+.splash-container {
   position: relative;
   width: 100vw;
   height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  opacity: 1;
+  transition: opacity 1s ease-in-out;
+}
+
+.logo {
+  position: absolute;
+  top: 20px;
+  left: 25px;
+  width: 50px;
+  height: auto;
+  z-index: 10;
+}
+
+.splashwaveanimation {
+  position: absolute;
+  width: 100%;
+  height: 100%;
   z-index: 0;
   overflow: hidden;
 }
+
+@keyframes splash-wave-1 {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  8% {
+    opacity: 1;
+  }
+  100% {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+.splash-wave-1,
+.splash-wave-2,
+.splash-wave-3,
+.splash-wave-4 {
+  position: absolute;
+  top: 0%;
+  left: 25%;
+  width: 50vw;
+  height: 50vw;
+  border-radius: 50%;
+  background-color: white;
+  box-shadow: 0 0 20vw #8c8c8c60;
+  opacity: 0;
+  animation: splash-wave-1 5.4s ease-out infinite;
+  transform: translate(-50%, -50%) scale(0);
+  z-index: 0;
+}
+
+.splash-wave-2 {
+  animation-delay: 1.3s;
+}
+
+.splash-wave-3 {
+  animation-delay: 2.6s;
+}
+
+.splash-wave-4 {
+  animation-delay: 3.9s;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+  z-index: 10;
+}
+
+.footer-links a {
+  color: #01bedb;
+  text-decoration: none;
+  font-size: 16px;
+  margin: 0 20px;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}
+
+.fade-out {
+  opacity: 0;
+}
+
+.img-tel {
+  position: absolute;
+  top: 25%;
+  left: 24%;
+  width: 55%;
+  height: 55%;
+  object-fit: contain;
+  z-index: 105;
+  transform: scale(1);
+  animation: logoin 400ms ease, logostay 400ms ease alternate-reverse infinite;
+}
+
 @keyframes logoin {
   0% {
     opacity: 0;
@@ -22,75 +126,3 @@
       transform: scale(0.9);
     }
   }
-
-@keyframes splash-wave-1 {
-  0% {
-    transform: scale(0);
-    opacity: 0;
-  }
-  8% {
-    opacity: 1;
-  }
-  100% {
-    transform: scale(4);
-    opacity: 0;
-  }
-}
-
-.img-tel {
-  position: absolute;
-  top: 25%;
-  left: 24%;
-  width: 55%;
-  height: 55%;
-  object-fit: contain;
-  z-index: 105;
-  transform: scale(1);
-  animation: logoin 400ms ease, logostay 400ms ease alternate-reverse infinite;
-}
-
-.splash-wave-1,
-.splash-wave-2,
-.splash-wave-3,
-.splash-wave-4 {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 25%;
-  margin: auto;
-  width: 50vw;
-  height: 50vw;
-  border-radius: 50%;
-  background-color: white;
-  -webkit-box-shadow: 0 0 20vw #8c8c8c60;
-  box-shadow: 0 0 20vw #8c8c8c60;
-  opacity: 0;
-  z-index: 0;
-  transform: scale(0);
-  box-sizing: border-box;
-  font-family: "Ubuntu", "Montserrat", sans-serif;
-  font-weight: 300;
-  font-size: 1rem;
-  color: #a8a8a8;
-  line-height: normal;
-}
-
-.splash-wave-1 {
-  z-index: 101;
-  animation: splash-wave-1 5.4s ease-out infinite;
-}
-
-.splash-wave-2 {
-  z-index: 102;
-  animation: splash-wave-1 5.4s 1.3s ease-out infinite;
-}
-
-.splash-wave-3 {
-  z-index: 103;
-  animation: splash-wave-1 5.4s 2.6s ease-out infinite;
-}
-
-.splash-wave-4 {
-  z-index: 104;
-  animation: splash-wave-1 5.4s 3.9s ease-out infinite;
-}
