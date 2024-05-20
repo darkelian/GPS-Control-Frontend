@@ -1,19 +1,35 @@
-<div class="card">
+<div class="card" [ngClass]="{'expanded': isExpanded}">
   <div class="card-header">
-    <i class="icon"><img src="../../assets/Img/Icon_crear.svg" alt="Icono Más"></i>
+    <div class="icon" (click)="toggleExpand()">
+      <img *ngIf="!isExpanded" src="../../assets/Img/Icon_crear.svg" alt="Add">
+      <img *ngIf="isExpanded" src="../../assets/Img/Icon_crear.svg" alt="Close">
+    </div>
   </div>
   <div class="card-body">
     <div class="card-item">
-      <i class="icon"><img src="../../assets/Img/Icon_vehiculo.svg" alt="Icono Car"></i>
+      <div class="icon">
+        <img *ngIf="!isExpanded" src="../../assets/Img/Icon_vehiculo.svg" alt="Car">
+        <img *ngIf="isExpanded" src="../../assets/Img/Icon_vehiculo1.svg" alt="New Car">
+      </div>
       <input type="text" placeholder="Mazda">
     </div>
     <div class="card-item">
-      <i class="icon"><img src="../../assets/Img/Icon_puntoubicacion.svg" alt="Icono Location"></i>
+      <div class="icon">
+        <img *ngIf="!isExpanded" src="../../assets/Img/Icon_puntoubicacion.svg" alt="Location">
+        <img *ngIf="isExpanded" src="../../assets/Img/Icon_puntoubicacion1.svg" alt="New Location">
+      </div>
       <input type="text" placeholder="Chapínero">
     </div>
     <div class="card-item">
-      <i class="icon"><img src="../../assets/Img/Icon_persona.svg" alt="Icono Person"></i>
+      <div class="icon">
+        <img *ngIf="!isExpanded" src="../../assets/Img/Icon_persona.svg" alt="Person">
+        <img *ngIf="isExpanded" src="../../assets/Img/Icon_persona1.svg" alt="New Person">
+      </div>
       <input type="text" placeholder="David Sandoval">
     </div>
+  </div>
+  <div class="card-footer" *ngIf="isExpanded">
+    <button class="cancel-button">Cancelar</button>
+    <button class="create-button">Crear</button>
   </div>
 </div>

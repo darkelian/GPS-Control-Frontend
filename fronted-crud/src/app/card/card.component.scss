@@ -4,7 +4,15 @@
   padding: 5px;
   border-radius: 15px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  background-color: #fff;
+  background-color: #ffffff;
+  border: none;
+  transition: height 0.5s ease-in-out;
+  overflow: hidden;
+  height: 225px;
+}
+
+.card.expanded {
+  height: 300px;
 }
 
 .card-header {
@@ -18,6 +26,7 @@
 .card-body {
   display: flex;
   flex-direction: column;
+  padding: 10px;
 }
 
 .card-item {
@@ -26,23 +35,63 @@
   margin-bottom: 15px;
 }
 
+.card-footer {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 0px;
+  padding-bottom: 10px;
+  background-color: transparent;
+  border: none;
+}
+
 .icon {
   margin-right: 10px;
 }
 
+.cancel-button,
+.create-button {
+  padding: 5px 15px;
+  border: 2px solid;
+  border-radius: 10px;
+  cursor: pointer;
+  background-color: #ffffff;
+  width: 100px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
 .card-header .icon img {
-  width: 14px; /* Ajusta el tamaño del icono de + aquí */
-  height: 14px; /* Ajusta el tamaño del icono de + aquí */
+  width: 14px;
+  height: 14px;
 }
 
 .card-body .icon img {
-  width: 24px; /* Tamaño de los otros iconos */
+  width: 24px;
   height: auto;
 }
 
 input {
   width: 100%;
   padding: 10px;
-  border: 1px solid #ccc;
+  border: 2px solid #C5C5C5;
   border-radius: 15px;
+}
+
+.cancel-button {
+  border-color: #E280BE;
+  color: #C5C5C5;
+}
+
+.cancel-button:hover {
+  background-color: #E280BE;
+  color: #ffffff;
+}
+
+.create-button {
+  border-color: #01BEDB;
+  color: #C5C5C5;
+}
+
+.create-button:hover {
+  background-color: #01BEDB;
+  color: #ffffff;
 }

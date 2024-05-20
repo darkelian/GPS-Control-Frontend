@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./card.component.scss']
 })
 export class CardComponent {
+  isExpanded = false;
 
+  toggleExpand(): void {
+    this.isExpanded = !this.isExpanded;
+  }
 }
