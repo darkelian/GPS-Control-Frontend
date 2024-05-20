@@ -7,8 +7,19 @@ import { Component } from '@angular/core';
 })
 export class CardComponent {
   isExpanded = false;
+  footerVisible = false;
 
-  toggleExpand(): void {
-    this.isExpanded = !this.isExpanded;
+  toggleExpand() {
+    if (this.isExpanded) {
+      this.footerVisible = false; // Ocultar botones antes de contraer la tarjeta
+      setTimeout(() => {
+        this.isExpanded = false; // Contraer la tarjeta después de un breve retraso
+      }, 500); // Duración de la animación para ocultar los botones
+    } else {
+      this.isExpanded = true; // Expandir la tarjeta
+      setTimeout(() => {
+        this.footerVisible = true; // Mostrar los botones después de un breve retraso
+      }, 500); // Retraso para mostrar los botones después de expandir la tarjeta
+    }
   }
 }

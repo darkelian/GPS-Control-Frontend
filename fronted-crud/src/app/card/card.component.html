@@ -28,7 +28,7 @@
       <input type="text" placeholder="David Sandoval">
     </div>
   </div>
-  <div class="card-footer" *ngIf="isExpanded">
+  <div class="card-footer" [ngClass]="{'visible': footerVisible}">
     <button class="cancel-button">Cancelar</button>
     <button class="create-button">Crear</button>
   </div>

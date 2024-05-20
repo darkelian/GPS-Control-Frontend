@@ -6,13 +6,14 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   background-color: #ffffff;
   border: none;
-  transition: height 0.5s ease-in-out;
+  transition: height 0.5s ease-in-out; /* Transición para animar la altura */
   overflow: hidden;
-  height: 225px;
+  width: 400px; /* Ancho de la tarjeta */
+  height: 225px; /* Altura inicial de la tarjeta */
 }
 
 .card.expanded {
-  height: 300px;
+  height: 300px; /* Altura de la tarjeta cuando está expandida */
 }
 
 .card-header {
@@ -42,6 +43,14 @@
   padding-bottom: 10px;
   background-color: transparent;
   border: none;
+  opacity: 0; /* Inicialmente oculto */
+  transform: translateX(-100%); /* Posición inicial fuera de la vista */
+  transition: opacity 0.5s ease, transform 0.5s ease; /* Transición para la animación */
+}
+
+.card.expanded .card-footer.visible {
+  opacity: 1; /* Visible cuando está expandido */
+  transform: translateX(0); /* Posición final */
 }
 
 .icon {
@@ -54,18 +63,18 @@
   border: 2px solid;
   border-radius: 10px;
   cursor: pointer;
-  background-color: #ffffff;
-  width: 100px;
+  background-color: #ffffff; /* Fondo blanco */
+  width: 100px; /* Asegura que ambos botones tengan el mismo ancho */
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .card-header .icon img {
-  width: 14px;
-  height: 14px;
+  width: 14px; /* Ajusta el tamaño del icono de + aquí */
+  height: 14px; /* Ajusta el tamaño del icono de + aquí */
 }
 
 .card-body .icon img {
-  width: 24px;
+  width: 24px; /* Tamaño de los otros iconos */
   height: auto;
 }
 
