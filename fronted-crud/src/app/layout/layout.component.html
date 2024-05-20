@@ -4,8 +4,10 @@
 <div id="section1" class="section">
   <app-home></app-home>
 </div>
-<div id="section2" class="section">
-  <h2>Section 2</h2>
-  <p>Content of section 2...</p>
-  <a href="javascript:void(0);" (click)="scrollToSection('section1')">Go to Section 1</a>
+<div id="section2" class="section section-two">
+  <div class="content-wrapper">
+    <app-card></app-card>
+    <app-table></app-table>
+  </div>
+  <app-footer></app-footer>
 </div>

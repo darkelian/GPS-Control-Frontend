@@ -1,0 +1,48 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+  border-radius: 15px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+
+.card-header {
+  display: flex;
+  justify-content: flex-start;
+  background-color: transparent;
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.icon {
+  margin-right: 10px;
+}
+
+.card-header .icon img {
+  width: 14px; /* Ajusta el tamaño del icono de + aquí */
+  height: 14px; /* Ajusta el tamaño del icono de + aquí */
+}
+
+.card-body .icon img {
+  width: 24px; /* Tamaño de los otros iconos */
+  height: auto;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+}

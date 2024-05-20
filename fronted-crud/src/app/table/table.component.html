@@ -1,0 +1,21 @@
+<table>
+  <thead>
+    <tr>
+      <th>Marca</th>
+      <th>Sucursal</th>
+      <th>Aspirante</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let row of rows">
+      <td>{{ row.marca }}</td>
+      <td>{{ row.sucursal }}</td>
+      <td>{{ row.aspirante }}</td>
+      <td>
+        <button class="edit-btn">✏️</button>
+        <button class="delete-btn">🗑️</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

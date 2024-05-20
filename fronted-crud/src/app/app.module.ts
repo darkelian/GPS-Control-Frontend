@@ -9,13 +9,19 @@ import { SplashComponent } from './splash/splash.component';
 import { HomeComponent } from './home/home.component';
 import { AngularFullpageModule } from '@fullpage/angular-fullpage';
 import { LayoutComponent } from './layout/layout.component';
+import { CardComponent } from './card/card.component';
+import { TableComponent } from './table/table.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SplashComponent,
     HomeComponent,
-    LayoutComponent
+    LayoutComponent,
+    CardComponent,
+    TableComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
