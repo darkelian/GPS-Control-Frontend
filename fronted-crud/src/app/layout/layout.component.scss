@@ -42,3 +42,55 @@ app-footer {
 .layout-container.fade-in {
   opacity: 1;
 }
+
+// Animación logo-button-up
+@keyframes moveUpDown {
+
+  0%,
+  100% {
+    top: 50px;
+  }
+
+  50% {
+    top: 35px;
+  }
+}
+
+
+@keyframes moveDownUp {
+
+  0%,
+  100% {
+    bottom: 0px;
+  }
+
+  50% {
+    bottom: -20px;
+  }
+}
+
+.logo-button-up {
+  position: absolute;
+  top: 50px;
+  left: auto;
+  width: 30px;
+  height: auto;
+  z-index: 10;
+  opacity: 0;
+  transform: translateY(-100%);
+  transition: opacity 0.5s ease-in-out;
+  animation: moveUpDown 1.5s infinite;
+}
+
+.logo-button-down {
+  position: absolute;
+  bottom: 0px;
+  left: 50%;
+  width: 30px;
+  height: auto;
+  z-index: 10;
+  opacity: 1;
+  transform: translateY(-100%);
+  transition: opacity 0.5s ease-in-out;
+  animation: moveDownUp 1.5s infinite;
+}

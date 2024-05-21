@@ -3,9 +3,11 @@
 </div>
 <div id="section1" class="section">
   <app-home></app-home>
+  <img class="logo-button-down hidden" src="../../assets/Img/motion_scroll-down.svg" alt="" (click)="scrollDown()">
 </div>
 <div id="section2" class="section section2">
   <div class="content-wrapper">
+    <img class="logo-button-up hidden" src="../../assets/Img/motion_scroll-up.svg" alt="" (click)="scrollUp()">
     <app-card></app-card>
     <app-table></app-table>
   </div>
