@@ -62,20 +62,17 @@ html {
   bottom: 0;
   left: 85%;
   margin: auto;
-  width: 50vw;
-  height: 50vw;
+  width: 60vw;
+  height: 60vw;
   border-radius: 50%;
   background-color: white;
-  box-shadow: 0 0 20vw #8c8c8c60;
+  box-shadow: 0 0 2vw #c5c5c5;
   opacity: 0;
   animation: splash-wave-1 5.4s ease-out infinite;
   transform: translate(-50%, -50%) scale(0);
   box-sizing: border-box;
 }
 
-.splash-wave-2 {
-  animation-delay: 1.3s;
-}
 
 // links
 .footer-links {
@@ -101,14 +98,17 @@ html {
   text-decoration: underline;
 }
 
+/*.splash-wave-2 {
+  animation-delay: 2s;
+}
 
 .splash-wave-3 {
-  animation-delay: 2.6s;
+  animation-delay: 4s;
 }
 
 .splash-wave-4 {
-  animation-delay: 3.9s;
-}
+  animation-delay: 6s;
+}*/
 
 // css titulo
 .title-container {
@@ -133,6 +133,7 @@ html {
   color: #00249C;
   margin: 0;
 }
+
 .home-container {
   height: 100vh;
   width: 100vw;

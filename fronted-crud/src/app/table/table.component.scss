@@ -1,32 +1,68 @@
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin: 20px 0;
-  font-size: 18px;
-  text-align: left;
+.custom-table{
+  width: 600px;
 }
 
-th, td {
-  padding: 12px;
-  border-bottom: 1px solid #ddd;
+.custom-table-body{
+  padding: 0px 15px;
+}
+.custom-table-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 10px;
+
+  .custom-table-cell-header {
+    background-color: #E280BE;
+    padding: 5px 24px;
+    color: white;
+    margin: 0px 5px;
+    font-size: 1.4rem;
+    font-weight: 500;
+    font-family: "Montserrat", sans-serif;
+  }
 }
 
-th {
-  background-color: #f4f4f4;
+.cs1,
+.cs2 {
+  width: 25%;
+  color:  #C5C5C5;
 }
 
-.edit-btn, .delete-btn {
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: 18px;
-  margin-right: 10px;
+.cs3 {
+  width: 50%;
+  color:  #C5C5C5;
 }
 
-.edit-btn {
-  color: #01bedb;
-}
+.custom-table-row {
+  display: flex;
+  align-items: center;
 
-.delete-btn {
-  color: #e74c3c;
+  .custom-table-cell {
+    display: flex;
+    align-items: flex-end;
+    border-bottom: 2px solid #E280BE;
+    height: 50px;
+    overflow: hidden;
+
+    p {
+      padding: 0px;
+      margin: 0px;
+      width: 100%;
+    }
+
+    .click-items {
+      width: 100%;
+      display: flex;
+      justify-content: end;
+      align-items: center;
+      height: 100%;
+
+      a {
+        width: 20px;
+        margin: 0px 10px;
+      }
+
+    }
+
+  }
 }

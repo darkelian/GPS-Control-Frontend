@@ -15,7 +15,8 @@ export class TableComponent implements OnInit {
   rows: TableRow[] = [
     { marca: 'Mazda', sucursal: 'Chapínero', aspirante: 'David Sandoval' },
     { marca: 'Mercedes', sucursal: 'Localidad', aspirante: 'Nombre Apellido' },
-    // Añade más filas según sea necesario
+    { marca: 'Ford', sucursal: 'Localidad', aspirante: 'Nombre Apellido' },
+
   ];
 
   constructor() { }

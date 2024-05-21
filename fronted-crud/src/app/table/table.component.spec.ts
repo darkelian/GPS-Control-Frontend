@@ -1,21 +1,22 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { Component } from '@angular/core';
 
-import { TableComponent } from './table.component';
+@Component({
+  selector: 'app-table',
+  templateUrl: './table.component.html',
+  styleUrls: ['./table.component.scss']
+})
+export class TableComponent {
+  rows = [
+    { marca: 'Mazda', sucursal: 'Chapínero', aspirante: 'David Sandoval' },
+    { marca: 'Mercedes', sucursal: 'Localidad', aspirante: 'Nombre Apellido' },
+    // Agrega más filas según sea necesario
+  ];
 
-describe('TableComponent', () => {
-  let component: TableComponent;
-  let fixture: ComponentFixture<TableComponent>;
+  editRow(row: any) {
+    // Lógica para editar la fila
+  }
 
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      declarations: [TableComponent]
-    });
-    fixture = TestBed.createComponent(TableComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+  deleteRow(row: any) {
+    // Lógica para eliminar la fila
+  }
+}
