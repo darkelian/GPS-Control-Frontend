@@ -18,10 +18,11 @@ interface TableRow {
 export class TableComponent implements OnInit {
   rows: TableRow[] = [];
   private subscription: Subscription = new Subscription();
-  editingDisabled = false; // Asegúrate de que esta propiedad esté definida
+  editingDisabled = false;
+  activeRowId: number | null = null;
 
   constructor(private dataService: ServicesDataService,
-              private sharedService: SharedService) { }
+    private sharedService: SharedService) { }
 
   ngOnInit(): void {
     this.updateTable();
@@ -50,9 +51,15 @@ export class TableComponent implements OnInit {
 
   sendRecordToCard(record: TableRow) {
     this.sharedService.setRecordToEdit(record);
+    this.activeRowId = record.id; // Establecer la fila activa para edición
   }
 
   sendRecordToDelete(record: TableRow) {
     this.sharedService.setRecordToDelete(record);
+    this.activeRowId = record.id; // Establecer la fila activa para eliminación
+  }
+
+  resetIcons() {
+    this.activeRowId = null; // Restablecer la fila activa
   }
 }

@@ -7,6 +7,7 @@ import { Component } from '@angular/core';
 })
 export class TableComponent {
 editingDisabled: any;
+activeRowId: any;
 sendRecordToDelete(_t8: any) {
 throw new Error('Method not implemented.');
 }

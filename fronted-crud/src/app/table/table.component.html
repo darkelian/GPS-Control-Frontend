@@ -11,8 +11,8 @@
       <div class="custom-table-cell cs3">
         <p>{{ item.applicant }}</p>
         <div class="click-items">
-          <a href="#"><img src="assets/Img/Icon_editar1.svg" alt="Editar" class="icon" (click)="sendRecordToCard(item)" [class.disabled]="editingDisabled"></a>
-          <a href="#" (click)="sendRecordToDelete(item)" [class.disabled]="editingDisabled"><img src="assets/Img/Icon_eliminar1.svg" alt="Eliminar" class="icon"></a>
+          <a ><img src="assets/Img/Icon_editar1.svg" alt="Editar" class="icon" (click)="sendRecordToCard(item)" [class.disabled]="editingDisabled || activeRowId !== null && activeRowId !== item.id"></a>
+          <a  (click)="sendRecordToDelete(item)" [class.disabled]="editingDisabled || activeRowId !== null && activeRowId !== item.id"><img src="assets/Img/Icon_eliminar1.svg" alt="Eliminar" class="icon"></a>
         </div>
       </div>
     </div>
