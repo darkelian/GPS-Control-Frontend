@@ -27,10 +27,23 @@ export class CardComponent implements OnInit {
       this.branch = record.branch;
       this.applicant = record.applicant;
       this.isEditAction = true;
-      this.isInputEnabled = true;
+      this.isDeleteAction = false;
+      this.isInputEnabled = true; // Habilitar inputs solo para edición
       this.isExpanded = true;
       this.footerVisible = true;
-      this.isDeleteAction = false;
+      this.sharedService.setEditingDisabled(true);
+    });
+
+    this.sharedService.recordToDelete$.subscribe(record => {
+      this.id = record.id;
+      this.brand = record.brand;
+      this.branch = record.branch;
+      this.applicant = record.applicant;
+      this.isDeleteAction = true;
+      this.isEditAction = false;
+      this.isInputEnabled = false; // Deshabilitar inputs para eliminación
+      this.isExpanded = true;
+      this.footerVisible = true;
       this.sharedService.setEditingDisabled(true);
     });
   }
@@ -41,7 +54,7 @@ export class CardComponent implements OnInit {
       this.sharedService.triggerCancelAction();
       setTimeout(() => {
         this.isExpanded = false;
-      }, 500);
+      }, 100);
       this.resetForm();
       this.isInputEnabled = false;
       this.isDeleteAction = false;
@@ -51,7 +64,7 @@ export class CardComponent implements OnInit {
       this.isExpanded = true;
       setTimeout(() => {
         this.footerVisible = true;
-      }, 200);
+      }, 100);
       this.isInputEnabled = true;
     }
   }
@@ -108,7 +121,7 @@ export class CardComponent implements OnInit {
     this.toggleExpand();
     this.isDeleteAction = false;
     this.sharedService.setEditingDisabled(false);
-    this.sharedService.triggerCancelAction();  // Emitir evento de cancelación
+    this.sharedService.triggerCancelAction();
   }
 
   cancelEdit() {
@@ -116,7 +129,7 @@ export class CardComponent implements OnInit {
     this.toggleExpand();
     this.isEditAction = false;
     this.sharedService.setEditingDisabled(false);
-    this.sharedService.triggerCancelAction();  // Emitir evento de cancelación
+    this.sharedService.triggerCancelAction();
   }
 
   resetForm() {

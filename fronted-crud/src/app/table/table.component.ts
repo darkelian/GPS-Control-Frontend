@@ -55,7 +55,7 @@ export class TableComponent implements OnInit {
 
   sendRecordToDelete(record: TableRow, index: number) {
     this.selectedRowIndex = index;
-    this.sharedService.setRecordToEdit(record);
+    this.sharedService.setRecordToDelete(record);
     this.editingDisabled = true;
   }
 

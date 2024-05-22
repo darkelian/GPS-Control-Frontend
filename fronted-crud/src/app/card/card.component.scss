@@ -77,22 +77,17 @@
   border-radius: 10px;
   cursor: pointer;
   background-color: #ffffff;
-  /* Fondo blanco */
   width: 100px;
-  /* Asegura que ambos botones tengan el mismo ancho */
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .card-header .icon img {
   width: 14px;
-  /* Ajusta el tamaño del icono de + aquí */
   height: 14px;
-  /* Ajusta el tamaño del icono de + aquí */
 }
 
 .card-body .icon img {
   width: 24px;
-  /* Tamaño de los otros iconos */
   height: auto;
 }
 
