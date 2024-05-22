@@ -68,17 +68,17 @@
   }
 }
 
+.custom-table .click-items a.disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
 .icon-edit-alt {
   content: url('../../assets/Img/Icon_editar.svg');
-  /* Ruta del nuevo ícono de editar */
+  /* Ruta del nuevo icono de editar */
 }
 
 .icon-delete-alt {
   content: url('../../assets/Img/Icon_eliminar.svg');
-  /* Ruta del nuevo ícono de eliminar */
-}
-
-.disabled {
-  opacity: 0.5;
-  pointer-events: none;
+  /* Ruta del nuevo icono de eliminar */
 }

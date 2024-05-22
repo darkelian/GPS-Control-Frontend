@@ -18,7 +18,7 @@ export class CardComponent implements OnInit {
   applicant = '';
   id: number | null = null;
 
-  constructor(private dataService: ServicesDataService, private sharedService: SharedService) { }
+  constructor(private dataService: ServicesDataService, private sharedService: SharedService) {}
 
   ngOnInit() {
     this.sharedService.recordToEdit$.subscribe(record => {
@@ -26,62 +26,47 @@ export class CardComponent implements OnInit {
       this.brand = record.brand;
       this.branch = record.branch;
       this.applicant = record.applicant;
-      this.isEditAction = true; // Marcar que es una acción de edición
-      this.isInputEnabled = true; // Habilitar inputs
-      this.isDeleteAction = false; // Resetear acción de eliminación
+      this.isEditAction = true;
+      this.isInputEnabled = true;
       this.isExpanded = true;
       this.footerVisible = true;
-      this.sharedService.setEditingDisabled(true); // Deshabilitar botones de editar y eliminar en la tabla
-    });
-
-    this.sharedService.recordToDelete$.subscribe(record => {
-      this.id = record.id;
-      this.brand = record.brand;
-      this.branch = record.branch;
-      this.applicant = record.applicant;
-      this.isDeleteAction = true; // Marcar que es una acción de eliminación
-      this.isInputEnabled = false; // Deshabilitar inputs
-      this.isEditAction = false; // Resetear acción de edición
-      this.isExpanded = true;
-      this.footerVisible = true;
-      this.sharedService.setEditingDisabled(true); // Deshabilitar botones de editar y eliminar en la tabla
+      this.isDeleteAction = false;
+      this.sharedService.setEditingDisabled(true);
     });
   }
 
   toggleExpand() {
     if (this.isExpanded) {
       this.footerVisible = false;
+      this.sharedService.triggerCancelAction();
       setTimeout(() => {
         this.isExpanded = false;
-      }, 100);
+      }, 500);
       this.resetForm();
-      this.isInputEnabled = false; // Deshabilitar inputs al contraer
-      this.isDeleteAction = false; // Resetear acción de eliminación
-      this.isEditAction = false; // Resetear acción de edición
-      this.sharedService.setEditingDisabled(false); // Habilitar botones de editar y eliminar en la tabla
+      this.isInputEnabled = false;
+      this.isDeleteAction = false;
+      this.isEditAction = false;
+      this.sharedService.setEditingDisabled(false);
     } else {
       this.isExpanded = true;
       setTimeout(() => {
         this.footerVisible = true;
-      }, 100);
-      this.isInputEnabled = !this.isDeleteAction; // Habilitar inputs al expandir, solo si no es eliminación
+      }, 200);
+      this.isInputEnabled = true;
     }
   }
 
   createRecord() {
-    if (!this.isDeleteAction && !this.isEditAction) { // Solo crear si no es una acción de eliminación o edición
+    if (!this.isDeleteAction && !this.isEditAction) {
       const newRecord = {
         brand: this.brand,
         branch: this.branch,
         applicant: this.applicant
       };
       this.dataService.createRecord(newRecord).subscribe(response => {
-        console.log('Record created successfully:', response);
         this.sharedService.triggerUpdateTable();
-        this.toggleExpand(); // Contraer la tarjeta después de crear el registro
+        this.toggleExpand();
         this.resetForm();
-      }, error => {
-        console.error('Error creating record:', error);
       });
     }
   }
@@ -95,29 +80,11 @@ export class CardComponent implements OnInit {
         applicant: this.applicant
       };
       this.dataService.deleteRecord(recordToDelete).subscribe(response => {
-        console.log('Record deleted successfully:', response);
         this.sharedService.triggerUpdateTable();
-        this.toggleExpand(); // Contraer la tarjeta después de eliminar el registro
+        this.toggleExpand();
         this.resetForm();
-        this.isDeleteAction = false; // Resetear acción de eliminación
-      }, error => {
-        console.error('Error deleting record:', error);
       });
     }
-  }
-
-  cancelDelete() {
-    this.resetForm();
-    this.toggleExpand(); // Contraer la tarjeta
-    this.isDeleteAction = false; // Resetear acción de eliminación
-    this.sharedService.setEditingDisabled(false); // Habilitar botones de editar y eliminar en la tabla
-  }
-
-  resetForm() {
-    this.id = null;
-    this.brand = '';
-    this.branch = '';
-    this.applicant = '';
   }
 
   updateRecord() {
@@ -129,21 +96,33 @@ export class CardComponent implements OnInit {
         applicant: this.applicant
       };
       this.dataService.updateRecord(recordToUpdate).subscribe(response => {
-        console.log('Record updated successfully:', response);
         this.sharedService.triggerUpdateTable();
-        this.toggleExpand(); // Contraer la tarjeta después de actualizar el registro
+        this.toggleExpand();
         this.resetForm();
-        this.isEditAction = false; // Resetear acción de edición
-      }, error => {
-        console.error('Error updating record:', error);
       });
     }
   }
 
+  cancelDelete() {
+    this.resetForm();
+    this.toggleExpand();
+    this.isDeleteAction = false;
+    this.sharedService.setEditingDisabled(false);
+    this.sharedService.triggerCancelAction();  // Emitir evento de cancelación
+  }
+
   cancelEdit() {
     this.resetForm();
-    this.toggleExpand(); // Contraer la tarjeta
-    this.isEditAction = false; // Resetear acción de edición
-    this.sharedService.setEditingDisabled(false); // Habilitar botones de editar y eliminar en la tabla
+    this.toggleExpand();
+    this.isEditAction = false;
+    this.sharedService.setEditingDisabled(false);
+    this.sharedService.triggerCancelAction();  // Emitir evento de cancelación
+  }
+
+  resetForm() {
+    this.id = null;
+    this.brand = '';
+    this.branch = '';
+    this.applicant = '';
   }
 }

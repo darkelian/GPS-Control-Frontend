@@ -18,21 +18,19 @@ interface TableRow {
 export class TableComponent implements OnInit {
   rows: TableRow[] = [];
   private subscription: Subscription = new Subscription();
-  editingDisabled = false;
-  activeRowId: number | null = null;
+  editingDisabled: boolean = false;
+  selectedRowIndex: number | null = null;
 
-  constructor(private dataService: ServicesDataService,
-    private sharedService: SharedService) { }
+  constructor(private dataService: ServicesDataService, private sharedService: SharedService) {}
 
   ngOnInit(): void {
     this.updateTable();
     this.subscription = this.sharedService.updateTable$.subscribe(() => {
       this.updateTable();
     });
-
     this.subscription.add(
-      this.sharedService.editingDisabled$.subscribe(disabled => {
-        this.editingDisabled = disabled;
+      this.sharedService.cancelAction$.subscribe(() => {
+        this.resetIcons();
       })
     );
   }
@@ -49,17 +47,20 @@ export class TableComponent implements OnInit {
     });
   }
 
-  sendRecordToCard(record: TableRow) {
+  sendRecordToEdit(record: TableRow, index: number) {
+    this.selectedRowIndex = index;
     this.sharedService.setRecordToEdit(record);
-    this.activeRowId = record.id; // Establecer la fila activa para edición
+    this.editingDisabled = true;
   }
 
-  sendRecordToDelete(record: TableRow) {
-    this.sharedService.setRecordToDelete(record);
-    this.activeRowId = record.id; // Establecer la fila activa para eliminación
+  sendRecordToDelete(record: TableRow, index: number) {
+    this.selectedRowIndex = index;
+    this.sharedService.setRecordToEdit(record);
+    this.editingDisabled = true;
   }
 
   resetIcons() {
-    this.activeRowId = null; // Restablecer la fila activa
+    this.selectedRowIndex = null;
+    this.editingDisabled = false;
   }
 }

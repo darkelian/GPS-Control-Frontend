@@ -6,9 +6,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./table.component.scss']
 })
 export class TableComponent {
+selectedRowIndex: any;
+sendRecordToEdit(_t8: any,_t9: any) {
+throw new Error('Method not implemented.');
+}
 editingDisabled: any;
 activeRowId: any;
-sendRecordToDelete(_t8: any) {
+sendRecordToDelete(_t8: any,_t9: any) {
 throw new Error('Method not implemented.');
 }
   rows = [

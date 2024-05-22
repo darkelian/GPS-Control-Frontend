@@ -5,14 +5,18 @@
     <div class="custom-table-cell-header cs3">Aspirante</div>
   </div>
   <div class="custom-table-body">
-    <div *ngFor="let item of rows" class="custom-table-row">
+    <div *ngFor="let item of rows; let i = index" class="custom-table-row">
       <div class="custom-table-cell cs1">{{ item.brand }}</div>
       <div class="custom-table-cell cs2">{{ item.branch }}</div>
       <div class="custom-table-cell cs3">
         <p>{{ item.applicant }}</p>
         <div class="click-items">
-          <a ><img src="assets/Img/Icon_editar1.svg" alt="Editar" class="icon" (click)="sendRecordToCard(item)" [class.disabled]="editingDisabled || activeRowId !== null && activeRowId !== item.id"></a>
-          <a  (click)="sendRecordToDelete(item)" [class.disabled]="editingDisabled || activeRowId !== null && activeRowId !== item.id"><img src="assets/Img/Icon_eliminar1.svg" alt="Eliminar" class="icon"></a>
+          <a href="#" (click)="sendRecordToEdit(item, i)" [class.disabled]="editingDisabled && selectedRowIndex !== i">
+            <img [src]="(editingDisabled && selectedRowIndex !== i) ? 'assets/Img/Icon_editar.svg' : 'assets/Img/Icon_editar1.svg'" alt="Editar" class="icon">
+          </a>
+          <a href="#" (click)="sendRecordToDelete(item, i)" [class.disabled]="editingDisabled && selectedRowIndex !== i">
+            <img [src]="(editingDisabled && selectedRowIndex !== i) ? 'assets/Img/Icon_eliminar.svg' : 'assets/Img/Icon_eliminar1.svg'" alt="Eliminar" class="icon">
+          </a>
         </div>
       </div>
     </div>
