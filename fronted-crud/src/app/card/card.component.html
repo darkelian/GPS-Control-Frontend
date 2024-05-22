@@ -1,6 +1,6 @@
 <div class="card" [ngClass]="{'expanded': isExpanded}">
   <div class="card-header">
-    <div class="icon" (click)="toggleExpand()">
+    <div class="icon add-plus" (click)="toggleExpand()">
       <img *ngIf="!isExpanded" src="assets/Img/Icon_crear.svg" alt="Add">
       <img *ngIf="isExpanded" src="assets/Img/Icon_crear.svg" alt="Close">
     </div>

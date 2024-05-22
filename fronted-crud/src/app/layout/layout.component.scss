@@ -80,6 +80,7 @@ app-footer {
   transform: translateY(-100%);
   transition: opacity 0.5s ease-in-out;
   animation: moveUpDown 1.5s infinite;
+  cursor: pointer;
 }
 
 .logo-button-down {
@@ -93,4 +94,5 @@ app-footer {
   transform: translateY(-100%);
   transition: opacity 0.5s ease-in-out;
   animation: moveDownUp 1.5s infinite;
+  cursor: pointer;
 }
