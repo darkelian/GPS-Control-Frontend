@@ -6,6 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./table.component.scss']
 })
 export class TableComponent {
+editingDisabled: any;
+sendRecordToDelete(_t8: any) {
+throw new Error('Method not implemented.');
+}
   rows = [
     { marca: 'Mazda', sucursal: 'Chapínero', aspirante: 'David Sandoval' },
     { marca: 'Mercedes', sucursal: 'Localidad', aspirante: 'Nombre Apellido' },

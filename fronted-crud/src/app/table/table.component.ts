@@ -4,7 +4,7 @@ import { SharedService } from '../service/shared.service';
 import { Subscription } from 'rxjs';
 
 interface TableRow {
-  id: number; // Agregar el campo id
+  id: number;
   brand: string;
   branch: string;
   applicant: string;
@@ -18,6 +18,7 @@ interface TableRow {
 export class TableComponent implements OnInit {
   rows: TableRow[] = [];
   private subscription: Subscription = new Subscription();
+  editingDisabled = false; // Asegúrate de que esta propiedad esté definida
 
   constructor(private dataService: ServicesDataService,
               private sharedService: SharedService) { }
@@ -27,6 +28,12 @@ export class TableComponent implements OnInit {
     this.subscription = this.sharedService.updateTable$.subscribe(() => {
       this.updateTable();
     });
+
+    this.subscription.add(
+      this.sharedService.editingDisabled$.subscribe(disabled => {
+        this.editingDisabled = disabled;
+      })
+    );
   }
 
   ngOnDestroy(): void {
@@ -43,5 +50,9 @@ export class TableComponent implements OnInit {
 
   sendRecordToCard(record: TableRow) {
     this.sharedService.setRecordToEdit(record);
+  }
+
+  sendRecordToDelete(record: TableRow) {
+    this.sharedService.setRecordToDelete(record);
   }
 }

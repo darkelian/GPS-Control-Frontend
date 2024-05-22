@@ -1,8 +1,8 @@
 <div class="custom-table">
   <div class="custom-table-header">
-      <div class="custom-table-cell-header cs1">Marca</div>
-      <div class="custom-table-cell-header cs2">Sucursal</div>
-      <div class="custom-table-cell-header cs3">Aspirante</div>
+    <div class="custom-table-cell-header cs1">Marca</div>
+    <div class="custom-table-cell-header cs2">Sucursal</div>
+    <div class="custom-table-cell-header cs3">Aspirante</div>
   </div>
   <div class="custom-table-body">
     <div *ngFor="let item of rows" class="custom-table-row">
@@ -11,8 +11,8 @@
       <div class="custom-table-cell cs3">
         <p>{{ item.applicant }}</p>
         <div class="click-items">
-          <a href="#"><img src="assets/Img/Icon_editar1.svg" alt="Editar" class="icon" (click)="sendRecordToCard(item)"></a>
-          <a href="#" (click)="sendRecordToCard(item)"><img src="assets/Img/Icon_eliminar1.svg" alt="Eliminar" class="icon"></a>
+          <a href="#"><img src="assets/Img/Icon_editar1.svg" alt="Editar" class="icon" (click)="sendRecordToCard(item)" [class.disabled]="editingDisabled"></a>
+          <a href="#" (click)="sendRecordToDelete(item)" [class.disabled]="editingDisabled"><img src="assets/Img/Icon_eliminar1.svg" alt="Eliminar" class="icon"></a>
         </div>
       </div>
     </div>

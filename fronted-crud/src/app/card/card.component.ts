@@ -28,6 +28,20 @@ export class CardComponent implements OnInit {
       this.applicant = record.applicant;
       this.isEditAction = true; // Marcar que es una acción de edición
       this.isInputEnabled = true; // Habilitar inputs
+      this.isDeleteAction = false; // Resetear acción de eliminación
+      this.isExpanded = true;
+      this.footerVisible = true;
+      this.sharedService.setEditingDisabled(true); // Deshabilitar botones de editar y eliminar en la tabla
+    });
+
+    this.sharedService.recordToDelete$.subscribe(record => {
+      this.id = record.id;
+      this.brand = record.brand;
+      this.branch = record.branch;
+      this.applicant = record.applicant;
+      this.isDeleteAction = true; // Marcar que es una acción de eliminación
+      this.isInputEnabled = false; // Deshabilitar inputs
+      this.isEditAction = false; // Resetear acción de edición
       this.isExpanded = true;
       this.footerVisible = true;
       this.sharedService.setEditingDisabled(true); // Deshabilitar botones de editar y eliminar en la tabla
@@ -50,7 +64,7 @@ export class CardComponent implements OnInit {
       setTimeout(() => {
         this.footerVisible = true;
       }, 100);
-      this.isInputEnabled = true; // Habilitar inputs al expandir
+      this.isInputEnabled = !this.isDeleteAction; // Habilitar inputs al expandir, solo si no es eliminación
     }
   }
 
