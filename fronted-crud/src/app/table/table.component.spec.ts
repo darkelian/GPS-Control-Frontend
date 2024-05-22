@@ -11,6 +11,7 @@ export class TableComponent {
     { marca: 'Mercedes', sucursal: 'Localidad', aspirante: 'Nombre Apellido' },
     // Agrega más filas según sea necesario
   ];
+sendRecordToCard: any;
 
   editRow(row: any) {
     // Lógica para editar la fila

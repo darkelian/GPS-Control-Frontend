@@ -11,25 +11,37 @@
         <img *ngIf="!isExpanded" src="assets/Img/Icon_vehiculo.svg" alt="Car">
         <img *ngIf="isExpanded" src="assets/Img/Icon_vehiculo1.svg" alt="New Car">
       </div>
-      <input type="text" placeholder="Mazda" [(ngModel)]="brand">
+      <input type="text" placeholder="Mazda" [(ngModel)]="brand" [disabled]="!isInputEnabled || isDeleteAction">
     </div>
     <div class="card-item">
       <div class="icon">
         <img *ngIf="!isExpanded" src="assets/Img/Icon_puntoubicacion.svg" alt="Location">
         <img *ngIf="isExpanded" src="assets/Img/Icon_puntoubicacion1.svg" alt="New Location">
       </div>
-      <input type="text" placeholder="Chapínero" [(ngModel)]="branch">
+      <input type="text" placeholder="Chapínero" [(ngModel)]="branch" [disabled]="!isInputEnabled || isDeleteAction">
     </div>
     <div class="card-item">
       <div class="icon">
         <img *ngIf="!isExpanded" src="assets/Img/Icon_persona.svg" alt="Person">
         <img *ngIf="isExpanded" src="assets/Img/Icon_persona1.svg" alt="New Person">
       </div>
-      <input type="text" placeholder="David Sandoval" [(ngModel)]="applicant">
+      <input type="text" placeholder="David Sandoval" [(ngModel)]="applicant" [disabled]="!isInputEnabled || isDeleteAction">
     </div>
   </div>
-  <div class="card-footer" [ngClass]="{'visible': footerVisible}">
-    <button class="cancel-button" (click)="resetForm(); toggleExpand()">Cancelar</button>
-    <button class="create-button" (click)="createRecord()">Crear</button>
+  <div class="card-footer" [ngClass]="{'visible': footerVisible, 'justify-end': isDeleteAction || isEditAction}">
+    <button *ngIf="!isDeleteAction && !isEditAction" class="cancel-button" (click)="resetForm(); toggleExpand()">Cancelar</button>
+    <button *ngIf="!isDeleteAction && !isEditAction" class="create-button" (click)="createRecord()">Crear</button>
+    <button *ngIf="isDeleteAction" class="cancel-delete-button" (click)="cancelDelete()">
+      <img src="assets/Img/Icon_cancelar.svg" alt="Cancelar">
+    </button>
+    <button *ngIf="isDeleteAction" class="delete-confirm-button" (click)="deleteRecord()">
+      <img src="assets/Img/Icon_confirmar.svg" alt="Confirmar">
+    </button>
+    <button *ngIf="isEditAction" class="cancel-edit-button" (click)="cancelEdit()">
+      <img src="assets/Img/Icon_cancelar.svg" alt="Cancelar">
+    </button>
+    <button *ngIf="isEditAction" class="edit-confirm-button" (click)="updateRecord()">
+      <img src="assets/Img/Icon_confirmar.svg" alt="Actualizar">
+    </button>
   </div>
 </div>

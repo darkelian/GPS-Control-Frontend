@@ -4,15 +4,24 @@ import { Subject } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-
 export class SharedService {
   private updateTableSubject = new Subject<void>();
+  private recordToEditSubject = new Subject<any>();
+  private editingDisabledSubject = new Subject<boolean>();
 
-  // Observable para que otros componentes se suscriban a las actualizaciones
   updateTable$ = this.updateTableSubject.asObservable();
+  recordToEdit$ = this.recordToEditSubject.asObservable();
+  editingDisabled$ = this.editingDisabledSubject.asObservable();
 
-  // Método para disparar la actualización
   triggerUpdateTable() {
     this.updateTableSubject.next();
+  }
+
+  setRecordToEdit(record: any) {
+    this.recordToEditSubject.next(record);
+  }
+
+  setEditingDisabled(disabled: boolean) {
+    this.editingDisabledSubject.next(disabled);
   }
 }
