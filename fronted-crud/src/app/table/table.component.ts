@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { ServicesDataService } from '../service/services-data.service';
+import { SharedService } from '../service/shared.service';
+import { Subscription } from 'rxjs';
 
 interface TableRow {
-  marca: string;
-  sucursal: string;
-  aspirante: string;
+  brand: string;
+  branch: string;
+  applicant: string;
 }
 
 @Component({
@@ -12,14 +15,27 @@ interface TableRow {
   styleUrls: ['./table.component.scss']
 })
 export class TableComponent implements OnInit {
-  rows: TableRow[] = [
-    { marca: 'Mazda', sucursal: 'Chapínero', aspirante: 'David Sandoval' },
-    { marca: 'Mercedes', sucursal: 'Localidad', aspirante: 'Nombre Apellido' },
-    { marca: 'Ford', sucursal: 'Localidad', aspirante: 'Nombre Apellido' },
+  rows: TableRow[] = [];
+  private subscription: Subscription = new Subscription();;
+  constructor(private dataService: ServicesDataService,
+    private sharedService: SharedService
+  ) { }
 
-  ];
+  ngOnInit(): void {
+    this.updateTable();
+    this.subscription = this.sharedService.updateTable$.subscribe(() => {
+      this.updateTable();
+    });
+  }
 
-  constructor() { }
-
-  ngOnInit(): void { }
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
+  updateTable() {
+    this.dataService.getDataTable().subscribe(response => {
+      if (response.success) {
+        this.rows = response.data;
+      }
+    });
+  }
 }

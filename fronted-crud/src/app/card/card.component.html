@@ -11,25 +11,25 @@
         <img *ngIf="!isExpanded" src="assets/Img/Icon_vehiculo.svg" alt="Car">
         <img *ngIf="isExpanded" src="assets/Img/Icon_vehiculo1.svg" alt="New Car">
       </div>
-      <input type="text" placeholder="Mazda">
+      <input type="text" placeholder="Mazda" [(ngModel)]="brand">
     </div>
     <div class="card-item">
       <div class="icon">
         <img *ngIf="!isExpanded" src="assets/Img/Icon_puntoubicacion.svg" alt="Location">
         <img *ngIf="isExpanded" src="assets/Img/Icon_puntoubicacion1.svg" alt="New Location">
       </div>
-      <input type="text" placeholder="Chapínero">
+      <input type="text" placeholder="Chapínero" [(ngModel)]="branch">
     </div>
     <div class="card-item">
       <div class="icon">
         <img *ngIf="!isExpanded" src="assets/Img/Icon_persona.svg" alt="Person">
         <img *ngIf="isExpanded" src="assets/Img/Icon_persona1.svg" alt="New Person">
       </div>
-      <input type="text" placeholder="David Sandoval">
+      <input type="text" placeholder="David Sandoval" [(ngModel)]="applicant">
     </div>
   </div>
   <div class="card-footer" [ngClass]="{'visible': footerVisible}">
-    <button class="cancel-button">Cancelar</button>
-    <button class="create-button">Crear</button>
+    <button class="cancel-button" (click)="resetForm(); toggleExpand()">Cancelar</button>
+    <button class="create-button" (click)="createRecord()">Crear</button>
   </div>
 </div>

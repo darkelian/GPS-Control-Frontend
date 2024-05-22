@@ -20,7 +20,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
     setTimeout(() => {
       this.showSplash = false;
-      this.router.navigate(['/layout']); // Asegúrate de que la ruta sea correcta
+      this.router.navigate(['/']); // Asegúrate de que la ruta sea correcta
     }, 2000); // Tiempo que se muestra el splash antes de desaparecer
   }
 }

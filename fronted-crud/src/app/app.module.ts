@@ -12,6 +12,7 @@ import { LayoutComponent } from './layout/layout.component';
 import { CardComponent } from './card/card.component';
 import { TableComponent } from './table/table.component';
 import { FooterComponent } from './footer/footer.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { FooterComponent } from './footer/footer.component';
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    AngularFullpageModule
+    AngularFullpageModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
